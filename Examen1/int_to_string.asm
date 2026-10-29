@@ -9,30 +9,30 @@ int_to_string:
     push esi
     push edi
 
-    mov edi, [ebp+8]          ; edi = puntero de escritura
+    mov edi, [ebp+8] ; edi = puntero del buffer
 
     cmp eax, 0
     jge .digits
     mov byte [edi], '-'
-    inc edi                   ; los dígitos empiezan después del signo
+    inc edi ; los dígitos empiezan después del signo
     neg eax
 
 .digits:
-    mov esi, edi              ; esi = inicio de los dígitos (para invertir)
+    mov esi, edi  ; esi = inicio de los dígitos (para invertir)
     mov ecx, 10
 
 .loop:
     xor edx, edx
-    div ecx                   ; eax = cociente, edx = residuo
+    div ecx   ; eax = cociente, edx = residuo
     add dl, '0'
     mov [edi], dl
     inc edi
     test eax, eax
     jnz .loop
 
-    mov byte [edi], 0         ; terminador
+    mov byte [edi], 0 
 
-    push esi                  ; invertir solo los dígitos
+    push esi ; invertir solo los dígitos
     call string_reverse
     add esp, 4
 
