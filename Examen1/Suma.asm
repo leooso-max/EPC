@@ -44,7 +44,7 @@ _start:
     mov eax, 3
     mov ebx, 0
     mov ecx, buffer
-    mov edx, 3cle2
+    mov edx, 32
     int 0x80
 
     push buffer
