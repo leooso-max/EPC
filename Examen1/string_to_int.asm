@@ -14,7 +14,7 @@ string_to_int:
     mov dword [ebp-8], 0 ; numero = 0
 
     cmp byte [esi], '-' ; Compara si el número es negativo
-    jge .for ; Salta si no son iguales
+    jne .for ; Salta si no son iguales
     mov dword [ebp-4], -1
     inc esi
 
